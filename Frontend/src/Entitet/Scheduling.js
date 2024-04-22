@@ -132,12 +132,11 @@ const Scheduling = () => {
             <div className="date-picker">
             <Row className="justify-content-center"> {/* Center the row */}
                 <Col md={3}> {/* Control the column width */}
-                    <FormGroup style={{ display: 'flex', alignItems: 'center' }}> {/* Keep items on one line */}
+                    <FormGroup style={{ display: 'flex', alignItems: 'center' }}>
                         <FormLabel
                             htmlFor=""
-                            style={{ marginRight: '10px', whiteSpace: 'nowrap' }} // Prevent line breaks
-                        >
-                            Pick a date
+                            style={{ marginRight: '10px', whiteSpace: 'nowrap',  fontWeight: 'bold' }}>
+                            Pick a date:
                         </FormLabel>
                         <Form.Control
                             type="date"
