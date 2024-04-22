@@ -9,6 +9,7 @@ import { logout } from './services/auth';
 import Zadaci from './Entitet/Zadaci';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Dodavanje from './Entitet/Dodavanje';
+import Scheduling from './Entitet/Scheduling';
 
 
 const App = () => {
@@ -22,8 +23,8 @@ const App = () => {
                             JWD
                         </Navbar.Brand>
                         <Nav>
-                        <Nav.Link as={Link} to="/zadaci">
-                            Zadaci
+                        <Nav.Link as={Link} to="/scheduling">
+                            Schedule 
                         </Nav.Link>  
                                          
                         <Button  onClick={logout}>Logout</Button>
@@ -34,7 +35,7 @@ const App = () => {
                 <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/login" element={<Navigate replace to = "/" />} />
-                        <Route path="/zadaci" element={<Zadaci />} />
+                        <Route path="/scheduling" element={<Scheduling />} />
                         <Route path='/dodavanje' element={<Dodavanje/>}/>                       
                         <Route path="*" element={<NotFound />} />
                     </Routes>

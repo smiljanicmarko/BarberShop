@@ -8,15 +8,15 @@ INSERT INTO korisnik (id, e_mail, korisnicko_ime, lozinka, ime, prezime, uloga)
       
 
 INSERT INTO barber (name, last_name, nickname, picture, about_me)  VALUES 
-("Milos", "Becelic", "Beca", "img", "Something about me");             
+("Milos", "Becelic", "Beca", "https://as2.ftcdn.net/v2/jpg/01/28/97/55/1000_F_128975588_ijMSMohSRoB5y0oGyyTeLRqvb7I2j3bI.jpg", "Something about me");             
 INSERT INTO barber (name, last_name, nickname, picture, about_me)  VALUES 
-("Sladjana", "Milosevic", "Sladja", "img", "Something about me");   
+("Sladjana", "Milosevic", "Sladja", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRURVpdM5552kswYdbTCYTCHNdn2nPDEkfDvQ&s", "Something about me");   
 INSERT INTO barber (name, last_name, nickname, picture, about_me)  VALUES 
-("Radovan", "Milivojevic", "Rasa", "img", "Something about me");   
+("Radovan", "Milivojevic", "Rasa", "https://media.istockphoto.com/id/1365608023/photo/shot-of-a-handsome-young-barber-standing-alone-in-his-salon.jpg?s=612x612&w=0&k=20&c=0l2Q3UVgXNnf3lbUvMM7hT18-AAnOloeoNMOHntomcw=", "Something about me");   
 INSERT INTO barber (name, last_name, nickname, picture, about_me)  VALUES 
-("Milena", "Pantic", "Milena", "img", "Something about me");   
+("Milena", "Pantic", "Milena", "https://freerangestock.com/sample/139248/beauty-hairstyle.-woman-with-a-fresh-haircut-.jpg", "Something about me");   
 INSERT INTO barber (name, last_name, nickname, picture, about_me)  VALUES 
-("Bojan", "Prodanovic", "Bojan", "img", "Something about me");   
+("Bojan", "Prodanovic", "Bojan", "https://watermark.lovepik.com/photo/20211202/large/lovepik-male-hairdresser-picture_501431901.jpg", "Something about me");   
 
 
 INSERT INTO service (name, price) VALUES ("Haircut", 950);

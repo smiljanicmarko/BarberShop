@@ -1,0 +1,22 @@
+.card-fixed-size {
+    width: 18rem; /* Consistent width for all cards */
+    height: 25rem; /* Consistent height for all cards */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Ensures even spacing */
+    align-items: center; /* Center content horizontally */
+    padding: 10px; /* Padding for inner content */
+    border-radius: 10px; /* Optional: rounded corners */
+    border: 1px solid #ddd; /* Optional: border styling */
+}
+
+.BarberCard {
+    display: inline-block; /* Ensures card layout doesn't affect surrounding elements */
+    margin-right: 10px; /* Optional: spacing between cards */
+}
+
+.card-image-fixed-size {
+    width: 100%; /* Ensure image takes full width of the card */
+    height: 150px; /* Set a fixed height */
+    object-fit: cover; /* Crop image to fill the area */
+}

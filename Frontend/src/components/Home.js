@@ -1,18 +1,42 @@
 import React from 'react'
 import { Col, Container, Row } from 'react-bootstrap';
+import './Home.css'
+import aboutUsParagraph from '../services/TextFiles';
 
 const Home = () =>{
+
+  
+
   return (
     <div className='home'>
-    <h1 style={{align: 'center'}}>HOME</h1>
+     
     <Container>
-      <Row className="justify-content-center">
-        <Col xs={12} md={8} lg={6}>
-          <img src="/images/scissors.jpg" className="img-fluid" alt="Responsive" style={{ display: 'block', marginLeft: 'auto', marginRight: 'auto' }} />
+        <Row>
+          <Col>
+            <h1 className="heading">MAN'S BARBER SHOP</h1> {/* First item */}
+          </Col>
+        </Row>
+
+        <Row className='secondPart'>
+          <Col>
+            <img
+              src="https://lirp.cdn-website.com/ac99697f/dms3rep/multi/opt/Team-1920w.jpg" /* Your image source */
+              alt="Example"
+              className="img-fluid"
+            /> {/* Second item */}
+          </Col>
+          <Col>
+            <div className="about-section">
+              <h2 className="heading2">About us</h2> {/* Third item */}
+             {aboutUsParagraph('about-us')}
+            </div>
+          </Col>
+        </Row>
+
+        <Row>
          
-        </Col>
-      </Row>
-    </Container>
+        </Row>
+      </Container>
   </div>
   )
 }
