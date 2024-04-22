@@ -1,6 +1,6 @@
 package barber.web.dto;
 
-public class UserRegistrationDto extends UserDto{
+public class UserRegistrationDto extends BarberDTO{
 
 	private String password;
 	private String passwordConfirm;

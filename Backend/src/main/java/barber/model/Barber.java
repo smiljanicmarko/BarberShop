@@ -33,6 +33,25 @@ public class Barber {
     private List<Appointment> appointments = new ArrayList<Appointment>();
     
     
+    
+    
+    
+	public Barber(Long id, String name, String lastName, String nickname, String picture, String aboutMe,
+			List<Appointment> appointments) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.lastName = lastName;
+		this.nickname = nickname;
+		this.picture = picture;
+		this.aboutMe = aboutMe;
+		this.appointments = appointments;
+	}
+
+	public Barber() {
+		super();
+	}
+
 	public Long getId() {
 		return id;
 	}

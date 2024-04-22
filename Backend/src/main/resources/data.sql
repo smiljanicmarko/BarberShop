@@ -19,7 +19,6 @@ INSERT INTO barber (name, last_name, nickname, picture, about_me)  VALUES
 ("Bojan", "Prodanovic", "Bojan", "img", "Something about me");   
 
 
-
 INSERT INTO service (name, price) VALUES ("Haircut", 950);
 INSERT INTO service (name, price) VALUES ("Buzz cut", 900);
 INSERT INTO service (name, price) VALUES ("Buzzing to zero", 450);

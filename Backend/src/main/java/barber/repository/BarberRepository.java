@@ -1,26 +1,20 @@
 package barber.repository;
 
-////import org.springframework.data.domain.Pageable; pageable se uvozi odavde!
-//import java.util.List;
-//
-//import org.springframework.data.domain.Page;
-//import org.springframework.data.domain.Pageable;
-//import org.springframework.data.jpa.repository.JpaRepository;
-//import org.springframework.data.jpa.repository.Query;
-//import org.springframework.data.repository.query.Param;
-//
-//import modul3.test.model.Korisnik;
-//
-//
-//@Repository
-//public interface Repository extends JpaRepository<Korisnik, Long> {
-//
-//	Prevoznik findOneById(Long id);
-//
-//
-//
-//	
-//
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import barber.model.Barber;
+
+
+@Repository
+public interface BarberRepository extends JpaRepository<Barber, Long> {
+
+	Barber findOneById(Long id);
+
+
+
+	
+
 //	@Query("SELECT p FROM Linija p WHERE "
 //			+ "(:destinacija IS NULL OR p.destinacija like %:destinacija%) AND "       
 //			+ "(:prevoznikId IS NULL OR p.prevoznik.id = :prevoznikId) AND "
@@ -29,11 +23,11 @@ package barber.repository;
 //			@Param("destinacija")String destinacija , 
 //			@Param("prevoznikId") Long prevoznikId,
 //			@Param("cenaKarteDo") Double cenaKarteDo, Pageable pageable);
-//
-//
-//
-//
-//}
+
+
+
+
+}
 
 
 
