@@ -1,5 +1,5 @@
 .card-fixed-size {
-    width: 18rem; /* Consistent width for all cards */
+    width: 15rem; /* Consistent width for all cards */
     height: 25rem; /* Consistent height for all cards */
     display: flex;
     flex-direction: column;
