@@ -7,7 +7,17 @@ INSERT INTO korisnik (id, e_mail, korisnicko_ime, lozinka, ime, prezime, uloga)
               
               
 
-              
+INSERT INTO barber (name, last_name, nickname, picture, about_me)  VALUES 
+("Milos", "Becelic", "Beca", "img", "Something about me");             
+INSERT INTO barber (name, last_name, nickname, picture, about_me)  VALUES 
+("Sladjana", "Milosevic", "Sladja", "img", "Something about me");   
+INSERT INTO barber (name, last_name, nickname, picture, about_me)  VALUES 
+("Radovan", "Milivojevic", "Rasa", "img", "Something about me");   
+INSERT INTO barber (name, last_name, nickname, picture, about_me)  VALUES 
+("Milena", "Pantic", "Milena", "img", "Something about me");   
+INSERT INTO barber (name, last_name, nickname, picture, about_me)  VALUES 
+("Bojan", "Prodanovic", "Bojan", "img", "Something about me");   
+
               
 --'2020-06-21 20:00'
 --'2020-07-22 21:00'
