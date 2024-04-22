@@ -1,9 +1,15 @@
 package barber.model;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Barber {
@@ -23,7 +29,10 @@ public class Barber {
     private String picture;
     
     private String aboutMe;
-
+    @OneToMany(mappedBy = "barber", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<Appointment> appointments = new ArrayList<Appointment>();
+    
+    
 	public Long getId() {
 		return id;
 	}
@@ -71,15 +80,19 @@ public class Barber {
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
+
+	public List<Appointment> getAppointments() {
+		return appointments;
+	}
+
+	public void setAppointments(List<Appointment> appointments) {
+		this.appointments = appointments;
+	}
     
     
 
    
 
-//    @OneToMany(mappedBy = "adresa", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-//    private List<Korisnik> korisnici = new ArrayList<>();
 
-    
-    
     
 }
