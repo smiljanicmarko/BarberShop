@@ -60,7 +60,7 @@ const Scheduling = () => {
         }));
     };
     const handleTimeClick = (cardId, hour) => {
-        // Update the selected card and hour
+        //Update the selected card and hour
         if (selectedCard === cardId && selectedHour === hour) {
             setSelectedCard(null);
             setSelectedHour(null);
@@ -71,23 +71,24 @@ const Scheduling = () => {
           }
       };
 
-
+      console.log('Karta: ' + selectedCard)
+      console.log('Vreme: ' + selectedHour)
 
     {/* ================================================ RENDER TABELE ========================================= */ }
     //=============================================================================================================
     const renderTabela = () => {
-        return barbers.map((klasa, index) => {
+        return barbers.map((barber, index) => {
             return (             
 
-                <Col key={klasa.id}>
+                <Col key={barber.id}>
                 <BarberCard
-                     id={klasa.id} // Ensure each card has an ID
-                     name={klasa.name}
-                     picture={klasa.picture}
-                     nickname={klasa.nickname}
-                     hours={klasa.hours}
-                     selectedCard={selectedCard} // Pass the selected card ID
-                     selectedHour={selectedHour} // Pass the selected hour
+                     id={barber.id} 
+                     name={barber.name}
+                     picture={barber.picture}
+                     nickname={barber.nickname}
+                     hours={barber.hours}
+                     selectedCard={selectedCard} 
+                     selectedHour={selectedHour} 
                      onTimeClick={handleTimeClick}
                 />
             </Col>

@@ -43,7 +43,7 @@ const BarberCard = (props) => {
           {formattedHours.map((row, rowIndex) => (
             <Row key={rowIndex}>
               {row.map((hour, colIndex) => (
-                <Col key={colIndex}  className={`text-center hoverable ${selectedHour === hour ? 'highlight' : ''}`}
+                <Col key={colIndex}  className={`text-center hoverable ${selectedHour === hour && selectedCard === id? 'highlight' : ''}`}
                  xs={3} style={{ padding: '5px', margin: '0' }} 
                  onClick={() => onTimeClick(id,hour)}> 
                   {hour}
