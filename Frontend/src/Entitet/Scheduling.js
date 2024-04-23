@@ -6,6 +6,7 @@ import { jwtDecode } from 'jwt-decode';
 import BarberCard from './BarberCard';
 import './Scheduling.css'
 import { formatOnlyDate, formatOnlyDate2 } from '../services/formatDate';
+import BottomPage from './BottomPage';
 
 const Scheduling = () => {
 
@@ -15,16 +16,20 @@ const Scheduling = () => {
     const isAdmin = decoded?.role?.authority === "ROLE_ADMIN";
 
     //========================== OBJEKAT PRETRAGE ==================================
-    let obj = {
-        date: ''
-    }
+    const getTodayDate = () => {
+        const today = new Date();
+        const yyyy = today.getFullYear();
+        const mm = String(today.getMonth() + 1).padStart(2, '0'); // Ensures 2-digit format
+        const dd = String(today.getDate()).padStart(2, '0');
+        return `${yyyy}-${mm}-${dd}`;
+      };
 
     // ========================== STATE ============================================
     const [selectedCard, setSelectedCard] = useState(null);
     const [selectedHour, setSelectedHour] = useState(null);
     const [selectedBarber, setSelectedBarber] = useState('')
     const [barbers, setBarbers] = useState([])
-    const [pickedDate, setPickedDate] = useState(obj)
+    const [pickedDate, setPickedDate] = useState({ date: getTodayDate() })
     const [isDisabled, setIsDisabled] = useState(true);
     // const formRef = useRef(null);
 
@@ -32,11 +37,17 @@ const Scheduling = () => {
     // /////////////////////////////////////////////////////// J A V A  S C R I P T  F U N K C I J E \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
     //======================== USE EFFECT ============================================
     useEffect(() => {
-        getBarbers();
-    }, []);
+         // Ensure date is not empty
+            getBarbers();
+         
+    }, [pickedDate.date]);
 
     const getBarbers = useCallback(() => {
-        TestAxios.get(`/barbers`)
+        TestAxios.get(`/barbers`, {
+            params:{
+                date: pickedDate.date
+            }
+        })
             .then(res => {
                 console.log(res);
                 setBarbers(res.data)
@@ -46,7 +57,7 @@ const Scheduling = () => {
                 console.log(error);
                 alert('Error occured please try again!');
             });
-    }, []);
+    }, [pickedDate.date]);
     //======================== NAVIGATE ============================================
     var navigate = useNavigate()
 
@@ -122,7 +133,7 @@ const Scheduling = () => {
     //= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = GLAVNI RETURN = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
     //= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = GLAVNI RETURN = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
     return (
-        <div>
+        <div className='main'>
             <Container fluid>
                 <h1 className='heading'>Scheduling</h1>
                 <div className='instruction-container'>
@@ -164,6 +175,7 @@ const Scheduling = () => {
                                 <Form.Control
                                     type="date"
                                     id=""
+                                    value={pickedDate.date}
                                     name="date"
                                     onChange={valueInputChanged}
                                     style={{ flex: '1' }} // Allow the date picker to expand
@@ -236,6 +248,8 @@ const Scheduling = () => {
                     </div>
                 </div>
             </Container>
+
+            <BottomPage></BottomPage>
         </div>
 
 

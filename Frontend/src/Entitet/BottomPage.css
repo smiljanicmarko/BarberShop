@@ -1,0 +1,16 @@
+.bottom{
+    margin-top: 150px;
+    background-image: url('https://www.whiteley.co.uk/wp-content/uploads/2018/11/barbercockadeL05.jpg');
+    background-size: 100%;
+    background-position: center;
+    height: 100vh;
+    width: 100%; 
+    background-repeat: no-repeat; /* Ensure the image doesn't repeat */   
+    padding: 20px;
+}
+
+
+.container.bottom{
+    margin-left: 0;
+    margin-right: 0;
+}
