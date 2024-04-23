@@ -25,7 +25,7 @@ import barber.web.dto.BarberDTO;
 
 @RestController
 @RequestMapping(value = "/api/barbers", produces = MediaType.APPLICATION_JSON_VALUE)
-public class KosturController {
+public class BarberController {
 
 	@Autowired 
 	private BarberService barberService;

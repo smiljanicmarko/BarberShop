@@ -32,7 +32,7 @@ public class Barber {
     @OneToMany(mappedBy = "barber", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<Appointment> appointments = new ArrayList<Appointment>();
     
-    
+    private Integer shift;
     
     
     

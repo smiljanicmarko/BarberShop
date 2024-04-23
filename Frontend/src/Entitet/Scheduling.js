@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import {FormGroup, FormLabel, Col, Form, Button, Row, Table } from 'react-bootstrap';
+import {FormGroup, FormLabel, Col, Form, Button, Row, Table, Container } from 'react-bootstrap';
 import { useNavigate } from "react-router-dom";
 import TestAxios from '../apis/TestAxios';
 import { jwtDecode } from 'jwt-decode';
@@ -100,7 +100,7 @@ const Scheduling = () => {
     //= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = GLAVNI RETURN = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
     //= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = GLAVNI RETURN = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
     return (
-        <div>
+        <Container fluid>
             <h1 className='heading'>Scheduling</h1>
             <div className='instruction-container'>
                 <ul className="instruction">
@@ -160,7 +160,7 @@ const Scheduling = () => {
                 </ul>
             </Row>
 
-        </div>
+        </Container>
     )
 
 }

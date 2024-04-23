@@ -1,8 +1,9 @@
 package barber.model;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -23,18 +24,21 @@ public class Appointment {
 	private Barber barber;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(nullable = false)
+	//@JoinColumn(nullable = false)
 	private Service service;
-	@Column(nullable = false)
+	//@Column(nullable = false)
 	private String  customerName;
-	@Column(nullable = false)
+	//@Column(nullable = false)
 	private String customerEmail;
-	@Column(nullable = false)
+	//@Column(nullable = false)
 	private String customerPhone;
 
 	private LocalDate date;
 	
-	private LocalDateTime time;
+	@ElementCollection
+    private List<String> timeSlots;
+	
+	
 	
 	public Long getId() {
 		return id;

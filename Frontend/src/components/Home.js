@@ -9,34 +9,29 @@ const Home = () =>{
 
   return (
     <div className='home'>
-     
-    <Container>
-        <Row>
+       <Row>
           <Col>
-            <h1 className="heading">MAN'S BARBER SHOP</h1> {/* First item */}
+            <h1 className="heading1">MAN'S BARBER SHOP</h1> {/* First item */}
           </Col>
         </Row>
 
-        <Row className='secondPart'>
-          <Col>
-            <img
-              src="https://lirp.cdn-website.com/ac99697f/dms3rep/multi/opt/Team-1920w.jpg" /* Your image source */
-              alt="Example"
-              className="img-fluid"
-            /> {/* Second item */}
-          </Col>
-          <Col>
-            <div className="about-section">
-              <h2 className="heading2">About us</h2> {/* Third item */}
-             {aboutUsParagraph('about-us')}
-            </div>
-          </Col>
-        </Row>
-
-        <Row>
-         
-        </Row>
-      </Container>
+        <Container>
+  <Row className='secondPart'>
+    <Col md={6} > {/* This sets a half-and-half layout */}
+      <img
+        src="https://lirp.cdn-website.com/ac99697f/dms3rep/multi/opt/Team-1920w.jpg"
+        alt="Example"
+        className="img-fluid"
+      />
+    </Col>
+    <Col md={6}>
+      <div className="about-section">
+        <h2 className="heading2">About us</h2>
+        {aboutUsParagraph('about-us')}
+      </div>
+    </Col>
+  </Row>
+</Container>
   </div>
   )
 }
