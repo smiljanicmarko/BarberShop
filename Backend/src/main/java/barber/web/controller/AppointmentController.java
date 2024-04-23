@@ -77,19 +77,19 @@
 //		
 //		
 //	
-////	//GET BY ID
-////
-////	@GetMapping("/{id}")
-////	public ResponseEntity <KlasaDto> get(@PathVariable Long id) {
-////		Klasa obj = klasaService.findOneById(id);
-////
-////		if(obj != null) {
-////			return new ResponseEntity<>(toDto.convert(obj), HttpStatus.OK);
-////		}else {
-////			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-////		}
-////	}
-////
+//	//GET BY ID
+//
+//	@GetMapping("/{id}")
+//	public ResponseEntity <KlasaDto> get(@PathVariable Long id) {
+//		Klasa obj = klasaService.findOneById(id);
+//
+//		if(obj != null) {
+//			return new ResponseEntity<>(toDto.convert(obj), HttpStatus.OK);
+//		}else {
+//			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//		}
+//	}
+//
 //
 //
 //
@@ -104,34 +104,34 @@
 //		return new ResponseEntity<>(toDto.convert(saved), HttpStatus.CREATED);
 //	}
 //
-////
-////	//DELETE
-////	//@PreAuthorize("hasRole('ADMIN')")
-////	@DeleteMapping("/{id}")
-////	public ResponseEntity<Void> delete(@PathVariable Long id){
-////		Klasa obrisan = klasaService.delete(id);
-////
-////		if(obrisan != null) {
-////			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-////		} else {
-////			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-////		}
-////	}
-////
-////	//UPDATE
-////	//@PreAuthorize("hasRole('ADMIN')")
-////	 @PutMapping(value = "/{id}",consumes = MediaType.APPLICATION_JSON_VALUE)
-////	    public ResponseEntity<LinijaDTO> update(@PathVariable Long id, @Valid @RequestBody LinijaDTO dto){
-////
-////	        if(!id.equals(dto.getId())) {
-////	            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-////	        }
-////
-////	        Linija linija = toKlasa.convert(dto);
-////	        Linija saved = linijaService.update(linija);
-////
-////	        return new ResponseEntity<>(toDto.convert(saved),HttpStatus.OK);
-////	    }
+//
+//	//DELETE
+//	//@PreAuthorize("hasRole('ADMIN')")
+//	@DeleteMapping("/{id}")
+//	public ResponseEntity<Void> delete(@PathVariable Long id){
+//		Klasa obrisan = klasaService.delete(id);
+//
+//		if(obrisan != null) {
+//			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//		} else {
+//			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//		}
+//	}
+//
+//	//UPDATE
+//	//@PreAuthorize("hasRole('ADMIN')")
+//	 @PutMapping(value = "/{id}",consumes = MediaType.APPLICATION_JSON_VALUE)
+//	    public ResponseEntity<LinijaDTO> update(@PathVariable Long id, @Valid @RequestBody LinijaDTO dto){
+//
+//	        if(!id.equals(dto.getId())) {
+//	            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+//	        }
+//
+//	        Linija linija = toKlasa.convert(dto);
+//	        Linija saved = linijaService.update(linija);
+//
+//	        return new ResponseEntity<>(toDto.convert(saved),HttpStatus.OK);
+//	    }
 //
 //	 
 //	 
