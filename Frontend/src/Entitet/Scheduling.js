@@ -14,13 +14,15 @@ const Scheduling = () => {
     const isAdmin = decoded?.role?.authority === "ROLE_ADMIN";
 
     //========================== OBJEKAT PRETRAGE ==================================
-
+    let obj = {
+        date:''
+    }
 
     // ========================== STATE ============================================
     const [selectedCard, setSelectedCard] = useState(null);
     const [selectedHour, setSelectedHour] = useState(null);
     const [barbers, setBarbers] = useState([])
-    const [pickedDate, setPickedDate] = useState('')
+    const [pickedDate, setPickedDate] = useState(obj)
 
     // /////////////////////////////////////////////////////// J A V A  S C R I P T  F U N K C I J E \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
     //======================== USE EFFECT ============================================
@@ -73,6 +75,7 @@ const Scheduling = () => {
 
       console.log('Karta: ' + selectedCard)
       console.log('Vreme: ' + selectedHour)
+      console.log( pickedDate.date)
 
     {/* ================================================ RENDER TABELE ========================================= */ }
     //=============================================================================================================
@@ -171,11 +174,7 @@ const Scheduling = () => {
             </Row>
 
 
-            {/* <Row >
-                <ul className='barbers'>
-                    {renderTabela()}
-                </ul>
-            </Row> */}
+            <Button onClick={()=>{console.log(pickedDate)}}>Klik</Button>
 
         </Container>
     )
