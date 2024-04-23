@@ -17,28 +17,22 @@ const Scheduling = () => {
 
 
     // ========================== STATE ============================================
-    const [tabela, setTabela] = useState([])
+    const [selectedCard, setSelectedCard] = useState(null);
+    const [selectedHour, setSelectedHour] = useState(null);
+    const [barbers, setBarbers] = useState([])
     const [pickedDate, setPickedDate] = useState('')
 
     // /////////////////////////////////////////////////////// J A V A  S C R I P T  F U N K C I J E \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
     //======================== USE EFFECT ============================================
     useEffect(() => {
-        getZadaci();
+        getBarbers();
     }, []);
 
-
-
-    // ======================== DOBAVLJANJE PODATAKA ================================
-    // Kada budes ubacivao pretragu,  nakon (?pageNo=${pageNo}`)) stavis ZAREZ i onda {objekat}, da bi se sve slalo u istom zahtevu, i paginacija nastavila da radi.
-    //u dependeci tu i iznad u useEffectu obavezno dodati parametar 'pretraga' , i tako imamo live search! 
-
-    // Ako mora na dugme, onda f-ja pretragaClickHandler, useEffect ostaje samo pageNo, a u getZadaci pageNo i pretraga. 
-
-    const getZadaci = useCallback(() => {
+    const getBarbers = useCallback(() => {
         TestAxios.get(`/barbers`)
             .then(res => {
                 console.log(res);
-                setTabela(res.data)
+                setBarbers(res.data)
 
             })
             .catch(error => {
@@ -65,22 +59,39 @@ const Scheduling = () => {
             [name]: value,
         }));
     };
-
+    const handleTimeClick = (cardId, hour) => {
+        // Update the selected card and hour
+        if (selectedCard === cardId && selectedHour === hour) {
+            setSelectedCard(null);
+            setSelectedHour(null);
+          } else {
+            // Otherwise, update the selected card and hour
+            setSelectedCard(cardId);
+            setSelectedHour(hour);
+          }
+      };
 
 
 
     {/* ================================================ RENDER TABELE ========================================= */ }
     //=============================================================================================================
     const renderTabela = () => {
-        return tabela.map((klasa, index) => {
-            return (
-                <li key={klasa.id}>
-                    <BarberCard
-                        name={klasa.name} // Example prop
-                        picture={klasa.picture} // Example prop
-                        nickname={klasa.nickname} // Example prop
-                    />
-                </li>
+        return barbers.map((klasa, index) => {
+            return (             
+
+                <Col key={klasa.id}>
+                <BarberCard
+                     id={klasa.id} // Ensure each card has an ID
+                     name={klasa.name}
+                     picture={klasa.picture}
+                     nickname={klasa.nickname}
+                     hours={klasa.hours}
+                     selectedCard={selectedCard} // Pass the selected card ID
+                     selectedHour={selectedHour} // Pass the selected hour
+                     onTimeClick={handleTimeClick}
+                />
+            </Col>
+
             )
         })
     }
@@ -151,14 +162,19 @@ const Scheduling = () => {
         </div>
 
 
-
-
-
             <Row>
+                <div className='barbers'>
+                {renderTabela()}
+                </div>
+                    
+            </Row>
+
+
+            {/* <Row >
                 <ul className='barbers'>
                     {renderTabela()}
                 </ul>
-            </Row>
+            </Row> */}
 
         </Container>
     )

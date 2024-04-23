@@ -1,5 +1,7 @@
 package barber.web.controller;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -15,9 +17,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import barber.model.Barber;
+import barber.model.WorkingHours;
+import barber.repository.WorkingHoursRepository;
 import barber.service.BarberService;
 import barber.support.BarberDtoToBarber;
 import barber.support.BarberToBarberDto;
@@ -33,7 +38,8 @@ public class BarberController {
 	private BarberToBarberDto toDto;
 	@Autowired
 	private BarberDtoToBarber toKlasa;
-	
+	@Autowired
+	private WorkingHoursRepository whRepository;
 	
 	//  @PreAuthorize("hasAnyRole('KORISNIK', 'ADMIN')")
 	 // @PreAuthorize("hasRole('ADMIN')")
@@ -61,12 +67,13 @@ public class BarberController {
 	//GET ALL LISTA
 	
 		@GetMapping
-		public ResponseEntity<List<BarberDTO>> getAll() {
-
-			List<Barber> stranice = barberService.findAll();
+		public ResponseEntity<List<BarberDTO>> getAll(@RequestParam (required = false, defaultValue = "") String date) {		
+			
+			
+			List<BarberDTO> stranice = barberService.findAll(date);
 
 		
-			return new ResponseEntity<>(toDto.convert(stranice), HttpStatus.OK);
+			return new ResponseEntity<>(stranice, HttpStatus.OK);
 
 		}
 	
@@ -128,7 +135,34 @@ public class BarberController {
 	    }
 
 	 
-	 
+	 @PutMapping(value = "/{id}/setShift")
+	    public ResponseEntity<BarberDTO> setShiftForBarber(@PathVariable Long id, @RequestParam Integer shift){
+
+		 	Barber barber= barberService.findOneById(id);
+		 	LocalDate today = LocalDate.now();
+		 
+	        if (barber == null || shift == null || shift < 0 || shift > 3) {
+	        	return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+	        }
+	        
+	    
+	       WorkingHours wh = new WorkingHours();
+	       wh.setDate(today);
+	       wh.setShift(shift);
+	        
+	        
+	       whRepository.save(wh);
+	       
+	       
+	       
+	     List<WorkingHours>whList = new ArrayList<WorkingHours>();
+	     whList.add(wh);
+	     
+	     barber.setWorkingHours(whList);
+	        barberService.save(barber);
+
+	        return new ResponseEntity<>(HttpStatus.OK);
+	    }
 }
 
 

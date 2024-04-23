@@ -9,6 +9,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -32,8 +35,13 @@ public class Barber {
     @OneToMany(mappedBy = "barber", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<Appointment> appointments = new ArrayList<Appointment>();
     
-    private Integer shift;
     
+    
+    @ManyToMany
+	@JoinTable(name = "barber_working_hours",
+	joinColumns = @JoinColumn(name = "barber_id"),
+	inverseJoinColumns = @JoinColumn(name = "working_hours_id"))	
+   private List<WorkingHours> workingHours = new ArrayList<WorkingHours>();
     
     
 	public Barber(Long id, String name, String lastName, String nickname, String picture, String aboutMe,
@@ -106,6 +114,14 @@ public class Barber {
 
 	public void setAppointments(List<Appointment> appointments) {
 		this.appointments = appointments;
+	}
+
+	public List<WorkingHours> getWorkingHours() {
+		return workingHours;
+	}
+
+	public void setWorkingHours(List<WorkingHours> workingHours) {
+		this.workingHours = workingHours;
 	}
     
     

@@ -1,9 +1,6 @@
 package barber.model;
 import java.time.LocalDate;
-import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -35,11 +32,8 @@ public class Appointment {
 
 	private LocalDate date;
 	
-	@ElementCollection
-    private List<String> timeSlots;
-	
-	
-	
+	private String time;
+
 	public Long getId() {
 		return id;
 	}
@@ -87,6 +81,23 @@ public class Appointment {
 	public void setCustomerPhone(String customerPhone) {
 		this.customerPhone = customerPhone;
 	}
+
+	public LocalDate getDate() {
+		return date;
+	}
+
+	public void setDate(LocalDate date) {
+		this.date = date;
+	}
+
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
+	}
+	
 	
 	
 

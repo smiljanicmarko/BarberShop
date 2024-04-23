@@ -1,7 +1,6 @@
 .barbers{
     display: flex; /* Use flexbox for horizontal layout */
     flex-direction: row; /* Ensure items are in a row */
-    list-style-type: none; /* Remove default list style */
     padding: 0; /* Remove default padding */
     margin: 0; /* Remove default margin */
 }

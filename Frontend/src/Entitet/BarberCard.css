@@ -13,6 +13,7 @@
 .BarberCard {
     display: inline-block; /* Ensures card layout doesn't affect surrounding elements */
     margin-right: 10px; /* Optional: spacing between cards */
+    
 }
 
 .card-image-fixed-size {
@@ -20,3 +21,15 @@
     height: 150px; /* Set a fixed height */
     object-fit: cover; /* Crop image to fill the area */
 }
+
+.hoverable {
+    cursor: pointer;
+  }
+  
+  .hoverable:hover {
+    background-color: lightgray; /* Optional: hover effect */
+  }
+  
+  .highlight {
+    background-color: #CC000099; /* Highlight clicked field in red */
+  }

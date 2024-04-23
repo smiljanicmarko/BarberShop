@@ -3,6 +3,7 @@ package barber.service;
 import java.util.List;
 
 import barber.model.Barber;
+import barber.web.dto.BarberDTO;
 
 public interface BarberService {
 	
@@ -11,6 +12,12 @@ public interface BarberService {
 	
   List<Barber> findAll();
 
+  List<BarberDTO> findAll(String date);
+  
+  
+  
+  
+  
   Barber save(Barber b);
 
   Barber update(Barber b);

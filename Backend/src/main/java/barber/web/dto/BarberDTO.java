@@ -1,5 +1,8 @@
 package barber.web.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BarberDTO {
 	
 	 	private Long id;
@@ -12,25 +15,13 @@ public class BarberDTO {
 	    
 	    private String picture;
 	    
-	    private String aboutMe;
-
+	    private String aboutMe; 
 	    
+	    private Long workingHoursId;
 	    
-	    
-	    
-		public BarberDTO(Long id, String name, String lastName, String nickname, String picture, String aboutMe) {
-			super();
-			this.id = id;
-			this.name = name;
-			this.lastName = lastName;
-			this.nickname = nickname;
-			this.picture = picture;
-			this.aboutMe = aboutMe;
-		}
-
-		public BarberDTO() {
-			super();
-		}
+	    private List<String> hours = new ArrayList<String>();
+	   
+	    private Integer shift;
 
 		public Long getId() {
 			return id;
@@ -79,6 +70,35 @@ public class BarberDTO {
 		public void setAboutMe(String aboutMe) {
 			this.aboutMe = aboutMe;
 		}
+
+		public Long getWorkingHoursId() {
+			return workingHoursId;
+		}
+
+		public void setWorkingHoursId(Long workingHoursId) {
+			this.workingHoursId = workingHoursId;
+		}
+
+		public List<String> getHours() {
+			return hours;
+		}
+
+		public void setHours(List<String> hours) {
+			this.hours = hours;
+		}
+
+		public Integer getShift() {
+			return shift;
+		}
+
+		public void setShift(Integer shift) {
+			this.shift = shift;
+		}
+	    
+	
+	  
+	    
+	  
 	
 	
 	

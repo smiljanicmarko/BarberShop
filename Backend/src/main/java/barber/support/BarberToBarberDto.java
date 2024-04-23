@@ -24,6 +24,10 @@ public class BarberToBarberDto implements Converter<Barber, BarberDTO> {
     	dto.setPicture(e.getPicture());
     	dto.setAboutMe(e.getAboutMe());
     	
+    	//working hours details need to be set in Service;
+    	
+    	
+    	
         return dto;
     }
 
