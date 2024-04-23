@@ -26,7 +26,9 @@ const Scheduling = () => {
     const [barbers, setBarbers] = useState([])
     const [pickedDate, setPickedDate] = useState(obj)
     const [isDisabled, setIsDisabled] = useState(true);
-    const formRef = useRef(null);
+    // const formRef = useRef(null);
+
+    const bookingSectionRef = useRef(null);
     // /////////////////////////////////////////////////////// J A V A  S C R I P T  F U N K C I J E \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
     //======================== USE EFFECT ============================================
     useEffect(() => {
@@ -48,14 +50,7 @@ const Scheduling = () => {
     //======================== NAVIGATE ============================================
     var navigate = useNavigate()
 
-    const goToAdd = () => {
-        navigate("/dodavanje");
-    }
-
-
-    const toggleDisabled = () => {
-        setIsDisabled(!isDisabled); // Toggle the disabled state
-    };
+  
     //============================================ HANDLERI ZA FORME I VALUE INPUT CHANGED ===============================
     const valueInputChanged = (e) => {
         const { name, value } = e.target;
@@ -71,17 +66,23 @@ const Scheduling = () => {
             // Otherwise, update the selected card and hour
             setSelectedCard(cardId);
             setSelectedHour(hour);
-            setIsDisabled(false);
-            if (formRef.current) {
-                formRef.current.focus();
-              }
-
+            setIsDisabled(false); 
             setSelectedBarber(nickname);
     };
 
     console.log('Karta: ' + selectedCard)
     console.log('Vreme: ' + selectedHour)
     console.log(pickedDate.date)
+
+    useEffect(() => {
+        if (!isDisabled && bookingSectionRef.current) {
+          bookingSectionRef.current.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start', // Scrolls to the start of the element
+          });
+        }
+      }, [isDisabled]); 
+
 
     {/* ================================================ RENDER TABELE ========================================= */ }
     //=============================================================================================================
@@ -184,7 +185,7 @@ const Scheduling = () => {
 
 
             </Container>
-            <Container fluid>
+            <Container fluid ref={bookingSectionRef}>
                 <div className='user-details-form'>
                     <div style={{ opacity: isDisabled ? 0.5 : 1, cursor: isDisabled ? 'not-allowed' : 'pointer' }}>
                         <h3>Your info</h3>
@@ -197,7 +198,7 @@ const Scheduling = () => {
 
                                     <FormGroup>
                                         <FormLabel htmlFor=''>Email</FormLabel>
-                                        <Form.Control ref={formRef} type='text' id='' name='' onChange={valueInputChanged}></Form.Control>
+                                        <Form.Control  type='email' id='' name='' onChange={valueInputChanged}></Form.Control>
                                     </FormGroup>
                                     <FormGroup>
                                         <FormLabel htmlFor=''>Name</FormLabel>
@@ -208,12 +209,15 @@ const Scheduling = () => {
                                         <Form.Control type='text' id='' name='' onChange={valueInputChanged}></Form.Control>
                                     </FormGroup>
                                     </Form>
-                                    <div className='booking-details'>
+
+                                    {!isDisabled &&
+                                        
+                                        <div className='booking-details'>
                                     <h5>Your booking: </h5>
-                                    <Table>
+                                    <Table className='table table-bordered'>
                                         <tbody>
                                         <tr>
-                                        <th>Service</th><td></td>
+                                        <th>Service</th><td>haircut</td>
                                         </tr>
                                         <tr>
                                         <th>Barber</th><td>{selectedBarber}</td>
@@ -223,8 +227,8 @@ const Scheduling = () => {
                                         </tr>
                                         </tbody>
                                     </Table>
-                                    <Button /* onClick={() => create()} */ >Add</Button>
-                                    </div>
+                                    <Button className='btn btn-danger'/* onClick={() => create()} */ >Book</Button>
+                                    </div>}                                    
                             </Col>
                            
 
