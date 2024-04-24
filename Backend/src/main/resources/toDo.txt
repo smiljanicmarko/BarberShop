@@ -1,0 +1,4 @@
+-edit barber
+-delete barber
+-Book an appointment
+-Update list of working hours, without occupied ones

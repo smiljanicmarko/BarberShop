@@ -32,7 +32,7 @@ const App = () => {
                         <Nav>
                         <Nav.Link as={Link} to="/scheduling">
                             Schedule 
-                        </Nav.Link>  
+                        </Nav.Link>        
                         {isAdmin? 
                         <Nav.Link as={Link} to="/barbers">
                         Barbers 
@@ -47,10 +47,10 @@ const App = () => {
                 <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/login" element={<Navigate replace to = "/" />} />
+                        <Route path="/scheduling" element={<Scheduling />} />
                         <Route path='/barbers' element={<Barbers/>} />
                         <Route path='/add-barber' element={<AddBarber/>} />
-                        <Route path='/set-shift/:id' element={<SetShift/>} />
-                        <Route path="/scheduling" element={<Scheduling />} />
+                        <Route path='/set-shift/:id' element={<SetShift/>} />                       
                         <Route path='/dodavanje' element={<Dodavanje/>}/>                       
                         <Route path="*" element={<NotFound />} />
                     </Routes>
@@ -66,7 +66,10 @@ const App = () => {
                         <Navbar.Brand as={Link} to="/">
                             JWD
                         </Navbar.Brand>
-                        <Nav>                       
+                        <Nav>   
+                        <Nav.Link as={Link} to="/scheduling">
+                            Schedule 
+                        </Nav.Link>                      
                         <Nav.Link as={Link} to="/login">
                             Login
                         </Nav.Link>
@@ -75,6 +78,7 @@ const App = () => {
                 <Container style={{paddingTop:"10px"}}>
                 <Routes>
                         <Route path="/" element={<Home />} />
+                        <Route path="/scheduling" element={<Scheduling />} />
                         <Route path="/login" element={<Login />} />                        
                         <Route path="*" element={<Navigate replace to = "/login" />} />
                     </Routes>
