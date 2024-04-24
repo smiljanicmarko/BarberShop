@@ -13,6 +13,7 @@ import Scheduling from './Entitet/Scheduling';
 import { jwtDecode } from 'jwt-decode';
 import Barbers from './Entitet/Barbers';
 import SetShift from './Entitet/SetShift';
+import AddBarber from './Entitet/AddBarber';
 
 
 const App = () => {
@@ -47,6 +48,7 @@ const App = () => {
                         <Route path="/" element={<Home />} />
                         <Route path="/login" element={<Navigate replace to = "/" />} />
                         <Route path='/barbers' element={<Barbers/>} />
+                        <Route path='/add-barber' element={<AddBarber/>} />
                         <Route path='/set-shift/:id' element={<SetShift/>} />
                         <Route path="/scheduling" element={<Scheduling />} />
                         <Route path='/dodavanje' element={<Dodavanje/>}/>                       

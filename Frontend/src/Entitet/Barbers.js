@@ -44,7 +44,7 @@ const Barbers = () => {
      var navigate = useNavigate()
 
      const goToAdd = () => {
-         navigate("/dodavanje");
+         navigate("/add-barber");
      }
      const goToSetShift = (id) => {
         navigate(`/set-shift/${id}`);
