@@ -15,7 +15,7 @@ const Scheduling = () => {
     const decoded = token ? jwtDecode(token) : null;
     const isAdmin = decoded?.role?.authority === "ROLE_ADMIN";
 
-    //========================== OBJEKAT PRETRAGE ==================================
+    //===========================================================
     const getTodayDate = () => {
         const today = new Date();
         const yyyy = today.getFullYear();
@@ -36,10 +36,8 @@ const Scheduling = () => {
     const bookingSectionRef = useRef(null);
     // /////////////////////////////////////////////////////// J A V A  S C R I P T  F U N K C I J E \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
     //======================== USE EFFECT ============================================
-    useEffect(() => {
-         // Ensure date is not empty
-            getBarbers();
-         
+    useEffect(() => {        
+            getBarbers();         
     }, [pickedDate.date]);
 
     const getBarbers = useCallback(() => {
