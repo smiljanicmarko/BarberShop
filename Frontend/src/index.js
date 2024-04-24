@@ -10,9 +10,15 @@ import Zadaci from './Entitet/Zadaci';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Dodavanje from './Entitet/Dodavanje';
 import Scheduling from './Entitet/Scheduling';
+import { jwtDecode } from 'jwt-decode';
+import Barbers from './Entitet/Barbers';
+import SetShift from './Entitet/SetShift';
 
 
 const App = () => {
+    const token = localStorage.getItem("jwt");
+    const decoded = token ? jwtDecode(token) : null;
+    const isAdmin = decoded?.role?.authority === "ROLE_ADMIN";
 
     if(window.localStorage["jwt"]){
         return (
@@ -26,6 +32,11 @@ const App = () => {
                         <Nav.Link as={Link} to="/scheduling">
                             Schedule 
                         </Nav.Link>  
+                        {isAdmin? 
+                        <Nav.Link as={Link} to="/barbers">
+                        Barbers 
+                        </Nav.Link>  :<></>
+                    }
                                          
                         <Button  onClick={logout}>Logout</Button>
                        
@@ -35,6 +46,8 @@ const App = () => {
                 <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/login" element={<Navigate replace to = "/" />} />
+                        <Route path='/barbers' element={<Barbers/>} />
+                        <Route path='/set-shift/:id' element={<SetShift/>} />
                         <Route path="/scheduling" element={<Scheduling />} />
                         <Route path='/dodavanje' element={<Dodavanje/>}/>                       
                         <Route path="*" element={<NotFound />} />

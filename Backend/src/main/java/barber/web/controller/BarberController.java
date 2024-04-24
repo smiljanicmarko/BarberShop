@@ -25,8 +25,11 @@ import barber.model.WorkingHours;
 import barber.repository.WorkingHoursRepository;
 import barber.service.BarberService;
 import barber.support.BarberDtoToBarber;
+import barber.support.BarberToBarberDetailsDto;
 import barber.support.BarberToBarberDto;
 import barber.web.dto.BarberDTO;
+import barber.web.dto.BarberDetailsDTO;
+import barber.web.dto.ShiftDTO;
 
 @RestController
 @RequestMapping(value = "/api/barbers", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -39,41 +42,38 @@ public class BarberController {
 	@Autowired
 	private BarberDtoToBarber toKlasa;
 	@Autowired
+	private BarberToBarberDetailsDto toBarberDetailsDto;
+	@Autowired
 	private WorkingHoursRepository whRepository;
 	
 	//  @PreAuthorize("hasAnyRole('KORISNIK', 'ADMIN')")
 	 // @PreAuthorize("hasRole('ADMIN')")
 	
 	
-	//GET ALL
-	
-//	@GetMapping
-//	public ResponseEntity<List<KlasaDto>> getAll(
-//			@RequestParam(required=false) String destinacija,
-//			@RequestParam(required=false) Long prevoznikId,
-//			@RequestParam(required=false) Double cenaKarteDo,
-//			@RequestParam(defaultValue="0") int pageNo) {
-//
-//		Page<Klasa> stranice = klasaService.pretraga(destinacija, prevoznikId, cenaKarteDo, pageNo);
-//
-//		HttpHeaders responseHeaders = new HttpHeaders();
-//		responseHeaders.set("Total-Pages", stranice.getTotalPages() + "");
-//
-//		return new ResponseEntity<>(toDto.convert(stranice.getContent()), responseHeaders, HttpStatus.OK);
-//
-//	}
+
 
 	
 	//GET ALL LISTA
 	
 		@GetMapping
-		public ResponseEntity<List<BarberDTO>> getAll(@RequestParam (required = false, defaultValue = "") String date) {		
+		public ResponseEntity<List<BarberDTO>> getBarbersWorkingHours (@RequestParam (required = false, defaultValue = "") String date) {		
 			
 			
 			List<BarberDTO> stranice = barberService.findAll(date);
 
 		
 			return new ResponseEntity<>(stranice, HttpStatus.OK);
+
+		}
+		
+		@GetMapping("/list")
+		public ResponseEntity<List<BarberDetailsDTO>> getAll () {		
+			
+			
+			List<Barber> stranice = barberService.findAll();
+
+		
+			return new ResponseEntity<>(toBarberDetailsDto.convert(stranice), HttpStatus.OK);
 
 		}
 	
@@ -163,7 +163,40 @@ public class BarberController {
 
 	        return new ResponseEntity<>(HttpStatus.OK);
 	    }
-}
+	 
+	 
+	 
+	
+	 
+	     @PostMapping("/{id}/set-shifts")
+	     public ResponseEntity<Void> setShifts( @PathVariable Long id, @RequestBody List<ShiftDTO> shifts) {
+	         // Here you can handle the shifts data
+	         // For example, save it to the database or update existing records
+	         
+	         // Your logic to process the shifts goes here
+	         System.out.println("Received shifts for barber " + id);
+	         for (ShiftDTO shift : shifts) {
+	             System.out.println("Date: " + shift.getDate()  + "Day: " + shift.getDay() + ", Shift: " + shift.getShift());
+	         }
+
+	         boolean success = barberService.setShifts(id, shifts);
+	         
+	         
+	         return ResponseEntity.ok().build();
+	     }
+	 }
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+
 
 
 

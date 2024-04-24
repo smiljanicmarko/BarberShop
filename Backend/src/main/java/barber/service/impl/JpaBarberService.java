@@ -2,18 +2,22 @@ package barber.service.impl;
 
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Service;
 
 import barber.model.Barber;
 import barber.model.WorkingHours;
 import barber.repository.BarberRepository;
+import barber.repository.WorkingHoursRepository;
 import barber.service.BarberService;
 import barber.support.BarberToBarberDto;
 import barber.web.dto.BarberDTO;
+import barber.web.dto.ShiftDTO;
 
 @Service
 public class JpaBarberService implements BarberService {
@@ -24,7 +28,8 @@ public class JpaBarberService implements BarberService {
 
 	@Autowired
 	private BarberToBarberDto toDto;
-	
+	@Autowired
+	private WorkingHoursRepository whRepository;
 	
 	@Override
 	public Barber findOneById(Long id) {
@@ -99,6 +104,35 @@ public class JpaBarberService implements BarberService {
 		
 		
 		return result;
+	}
+			//problem kod parsiranja datuma, promeniti ga  na frontu, ili parsirati preko NOVOG formatera
+	@Override
+	public boolean setShifts(Long barberId, List<ShiftDTO> dto) {
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+		
+		Barber barber = barberRepository.findOneById(barberId);
+		if (barber == null) {
+			return false;
+		}
+		List<WorkingHours> whList = new ArrayList<WorkingHours>();
+		for (ShiftDTO s : dto) {			
+			if (s.getShift()==null) {
+				continue;
+			}
+			WorkingHours wh = new WorkingHours();
+			LocalDate parsedDate = LocalDate.parse(s.getDate(), dtf);
+			wh.setDate(parsedDate);
+			wh.setShift(s.getShift());
+			WorkingHours saved = whRepository.save(wh);
+			
+			whList.add(saved);
+		}
+		
+		barber.setWorkingHours(whList);
+		barberRepository.save(barber);
+		
+		
+		return true;
 	}
    
 }

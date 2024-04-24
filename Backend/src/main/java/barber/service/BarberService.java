@@ -4,6 +4,7 @@ import java.util.List;
 
 import barber.model.Barber;
 import barber.web.dto.BarberDTO;
+import barber.web.dto.ShiftDTO;
 
 public interface BarberService {
 	
@@ -14,7 +15,7 @@ public interface BarberService {
 
   List<BarberDTO> findAll(String date);
   
-  
+  boolean setShifts (Long barberId, List<ShiftDTO>dto);
   
   
   
