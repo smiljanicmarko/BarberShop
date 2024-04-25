@@ -2,3 +2,6 @@
 -delete barber
 -Book an appointment
 -Update list of working hours, without occupied ones
+-Some statistic and reports for Admin
+-maybe add Break options for barber
+-Maybe add some options to choose random time intervals for the day
