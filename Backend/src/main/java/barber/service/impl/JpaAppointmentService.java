@@ -64,11 +64,9 @@ public class JpaAppointmentService implements AppointmentService {
 	public Appointment bookAppointment(AppointmentDTO dto) {
 
 		Barber barber = barberRepository.findOneById(dto.getBarberId());
-		BarberService service = serviceRepository.findOneById(dto.getServiceId());
-		System.out.println("IZ SERVISAAA: ");
+		BarberService service = serviceRepository.findOneById(dto.getServiceId());	
 		
-		if (barber == null || service == null) {
-					
+		if (barber == null || service == null) {					
 			return null;
 		}
 		
@@ -76,7 +74,7 @@ public class JpaAppointmentService implements AppointmentService {
 		
 		barber.addAppointment(appointment);
 		barberRepository.save(barber);
-		System.out.println("da li je appointment null?" + appointment==null? true : false);
+	
 		return appointment;
 	}
 
