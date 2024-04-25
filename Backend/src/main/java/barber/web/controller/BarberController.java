@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import barber.model.Barber;
 import barber.model.WorkingHours;
 import barber.repository.WorkingHoursRepository;
-import barber.service.BarberService;
+import barber.service.BarberServiceService;
 import barber.support.BarberDtoToBarber;
 import barber.support.BarberToBarberDetailsDto;
 import barber.support.BarberToBarberDto;
@@ -36,7 +36,7 @@ import barber.web.dto.ShiftDTO;
 public class BarberController {
 
 	@Autowired 
-	private BarberService barberService;
+	private BarberServiceService barberService;
 	@Autowired
 	private BarberToBarberDto toDto;
 	@Autowired

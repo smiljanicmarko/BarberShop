@@ -6,7 +6,7 @@ import barber.model.Barber;
 import barber.web.dto.BarberDTO;
 import barber.web.dto.ShiftDTO;
 
-public interface BarberService {
+public interface BarberServiceService {
 	
 	
   Barber findOneById(Long id);

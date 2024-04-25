@@ -1,7 +1,6 @@
 package barber.web.dto;
 
 import java.time.LocalDate;
-import java.util.List;
 
 public class AppointmentDTO {
 
@@ -23,7 +22,7 @@ public class AppointmentDTO {
 
 	private LocalDate date;	
 
-    private List<String> timeSlots;
+    private String time;
 
 	public Long getId() {
 		return id;
@@ -97,14 +96,15 @@ public class AppointmentDTO {
 		this.date = date;
 	}
 
-	public List<String> getTimeSlots() {
-		return timeSlots;
+	public String getTime() {
+		return time;
 	}
 
-	public void setTimeSlots(List<String> timeSlots) {
-		this.timeSlots = timeSlots;
+	public void setTime(String time) {
+		this.time = time;
 	}
-    
+
+	
     
     
 	

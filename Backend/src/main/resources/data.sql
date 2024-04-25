@@ -19,14 +19,14 @@ INSERT INTO barber (name, last_name, nickname, picture, about_me)  VALUES
 ("Bojan", "Prodanovic", "Bojan", "https://watermark.lovepik.com/photo/20211202/large/lovepik-male-hairdresser-picture_501431901.jpg", "Something about me");   
 
 
-INSERT INTO service (name, price) VALUES ("Haircut", 950);
-INSERT INTO service (name, price) VALUES ("Buzz cut", 900);
-INSERT INTO service (name, price) VALUES ("Buzzing to zero", 450);
-INSERT INTO service (name, price) VALUES ("Buzzing to zero + beard", 650);
-INSERT INTO service (name, price) VALUES ("Hair washing", 250);
-INSERT INTO service (name, price) VALUES ("Beard styling", 400);
-INSERT INTO service (name, price) VALUES ("Hair + beard", 1200);
-INSERT INTO service (name, price) VALUES ("Long hair haircut", 1100);
+INSERT INTO barber_service (name, price) VALUES ("Haircut", 950);
+INSERT INTO barber_service (name, price) VALUES ("Buzz cut", 900);
+INSERT INTO barber_service (name, price) VALUES ("Buzzing to zero", 450);
+INSERT INTO barber_service (name, price) VALUES ("Buzzing to zero + beard", 650);
+INSERT INTO barber_service (name, price) VALUES ("Hair washing", 250);
+INSERT INTO barber_service (name, price) VALUES ("Beard styling", 400);
+INSERT INTO barber_service (name, price) VALUES ("Hair + beard", 1200);
+INSERT INTO barber_service (name, price) VALUES ("Long hair haircut", 1100);
 
 
 

@@ -3,6 +3,7 @@ package barber.service;
 import java.util.List;
 
 import barber.model.Appointment;
+import barber.web.dto.AppointmentDTO;
 
 public interface AppointmentService {
 	
@@ -17,8 +18,7 @@ public interface AppointmentService {
 
   Appointment delete(Long id);
 
-  //Page<Linija> pretraga(String destinacija, Long prevoznikId, Double cenaKarteDo, int pageNo);
-  
+  Appointment bookAppointment (AppointmentDTO dto);
 
   
 	

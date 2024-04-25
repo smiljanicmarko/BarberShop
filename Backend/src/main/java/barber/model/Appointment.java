@@ -22,7 +22,7 @@ public class Appointment {
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	//@JoinColumn(nullable = false)
-	private Service service;
+	private BarberService service;
 	//@Column(nullable = false)
 	private String  customerName;
 	//@Column(nullable = false)
@@ -50,11 +50,11 @@ public class Appointment {
 		this.barber = barber;
 	}
 
-	public Service getService() {
+	public BarberService getService() {
 		return service;
 	}
 
-	public void setService(Service service) {
+	public void setService(BarberService service) {
 		this.service = service;
 	}
 

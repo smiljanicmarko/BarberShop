@@ -2,14 +2,14 @@ package barber.service;
 
 import java.util.List;
 
-import barber.model.Service;
+import barber.model.BarberService;
 
 public interface ServiceService {
 	
 	
-  Service findOneById(Long id);
+  BarberService findOneById(Long id);
 	
-  List<Service> findAll();
+  List<BarberService> findAll();
 
 //  Appointment save(Appointment a);
 //

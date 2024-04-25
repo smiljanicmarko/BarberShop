@@ -116,6 +116,17 @@ public class Barber {
 		this.appointments = appointments;
 	}
 
+	public void addAppointment(Appointment a) {
+		  if (a == null) {
+		        throw new IllegalArgumentException("Appointment cannot be null");
+		    }
+		    
+		    if (!appointments.contains(a)) {
+		        appointments.add(a);
+		        a.setBarber(this); 
+		    }
+	}
+	
 	public List<WorkingHours> getWorkingHours() {
 		return workingHours;
 	}

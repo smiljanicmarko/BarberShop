@@ -74,12 +74,17 @@ public class AppointmentController {
 	//CREATE
 	//@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<AppointmentDTO> create(@Valid @RequestBody AppointmentDTO dto){
+	public ResponseEntity<AppointmentDTO> bookAppointment(@Valid @RequestBody AppointmentDTO dto){
 
-		Appointment obj = toKlasa.convert(dto);
-		Appointment saved = appointmentService.save(obj);
+		Appointment obj = appointmentService.bookAppointment(dto);
+		
+		if(obj != null) {
+			return new ResponseEntity<>(toDto.convert(obj), HttpStatus.CREATED);
+		}else {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST); 
+		}
 
-		return new ResponseEntity<>(toDto.convert(saved), HttpStatus.CREATED);
+		
 	}
 
 

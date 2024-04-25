@@ -6,14 +6,14 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
 import barber.model.Barber;
-import barber.service.BarberService;
+import barber.service.BarberServiceService;
 import barber.web.dto.BarberDTO;
 
 @Component
 public class BarberDtoToBarber implements Converter<BarberDTO, Barber> {
 
     @Autowired
-    private BarberService barberService;
+    private BarberServiceService barberService;
 
 //    @Autowired
 //    private ZanrService zanrService;

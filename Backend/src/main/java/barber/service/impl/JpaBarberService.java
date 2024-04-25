@@ -14,13 +14,13 @@ import barber.model.Barber;
 import barber.model.WorkingHours;
 import barber.repository.BarberRepository;
 import barber.repository.WorkingHoursRepository;
-import barber.service.BarberService;
+import barber.service.BarberServiceService;
 import barber.support.BarberToBarberDto;
 import barber.web.dto.BarberDTO;
 import barber.web.dto.ShiftDTO;
 
 @Service
-public class JpaBarberService implements BarberService {
+public class JpaBarberService implements BarberServiceService {
 
 	
 	@Autowired

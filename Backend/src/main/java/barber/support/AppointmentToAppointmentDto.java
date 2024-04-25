@@ -26,8 +26,7 @@ public class AppointmentToAppointmentDto implements Converter<Appointment, Appoi
     	dto.setId(e.getId());
     	dto.setService(e.getService().getName());
     	dto.setServiceId(e.getService().getId());
-
-    	
+    	dto.setTime(e.getTime());    	
         return dto;
     }
 

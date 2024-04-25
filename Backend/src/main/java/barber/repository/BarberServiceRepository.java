@@ -3,13 +3,13 @@ package barber.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import barber.model.Service;
+import barber.model.BarberService;
 
 
 @Repository
-public interface ServiceRepository extends JpaRepository<Service, Long> {
+public interface BarberServiceRepository extends JpaRepository<BarberService, Long> {
 
-	Service findOneById(Long id);
+	BarberService findOneById(Long id);
 
 
 
