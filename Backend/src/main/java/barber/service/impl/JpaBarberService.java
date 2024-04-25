@@ -104,7 +104,7 @@ public class JpaBarberService implements BarberService {
 		
 		return result;
 	}
-			//problem kod parsiranja datuma, promeniti ga  na frontu, ili parsirati preko NOVOG formatera
+			
 	@Override
 	public boolean setShifts(Long barberId, List<ShiftDTO> dto) {
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy");

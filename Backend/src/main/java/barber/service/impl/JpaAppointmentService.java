@@ -60,6 +60,8 @@ public class JpaAppointmentService implements AppointmentService {
 		return ap;
 	}
 
+	
+	//TO DO LATER: VERIFICATION!
 	@Override
 	public Appointment bookAppointment(AppointmentDTO dto) {
 
