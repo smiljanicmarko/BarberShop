@@ -1,5 +1,6 @@
 package barber.service.impl;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,6 +79,12 @@ public class JpaAppointmentService implements AppointmentService {
 		barberRepository.save(barber);
 	
 		return appointment;
+	}
+
+	@Override
+	public List<Appointment> findByDateAndBarberId(LocalDate date, Long id) {
+		
+		return appointmentRepository.findByDateAndBarberId(date, id);
 	}
 
 }

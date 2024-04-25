@@ -81,7 +81,7 @@ const Scheduling = () => {
             console.log(res);
            
             alert('Dodavanje je uspesno izvrseno!');
-            navigate('/scheduling'); 
+            getBarbers();
         })
         .catch(error => {           
             console.log(error);

@@ -1,5 +1,6 @@
 package barber.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import barber.model.Appointment;
@@ -20,7 +21,7 @@ public interface AppointmentService {
 
   Appointment bookAppointment (AppointmentDTO dto);
 
-  
+  List<Appointment> findByDateAndBarberId(LocalDate date, Long id);
 	
 	
 //  Page<Film> findAll(Integer pageNo);

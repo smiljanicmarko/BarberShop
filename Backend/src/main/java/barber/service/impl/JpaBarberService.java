@@ -9,8 +9,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import barber.model.Appointment;
 import barber.model.Barber;
 import barber.model.WorkingHours;
+import barber.repository.AppointmentRepository;
 import barber.repository.BarberRepository;
 import barber.repository.WorkingHoursRepository;
 import barber.service.BarberService;
@@ -24,6 +26,9 @@ public class JpaBarberService implements BarberService {
 	
 	@Autowired
 	private BarberRepository barberRepository;
+	
+	@Autowired
+	private AppointmentRepository appointmentRepository;
 
 	@Autowired
 	private BarberToBarberDto toDto;
@@ -80,25 +85,34 @@ public class JpaBarberService implements BarberService {
 	}
 		
 		
-		List<Barber>barbers = barberRepository.findAll();
-		
+		List<Barber>barbers = barberRepository.findAll();		
 		List<BarberDTO>result = new ArrayList<BarberDTO>();
 		
 		for (Barber b : barbers) {
-			
-			BarberDTO dto = toDto.convert(b);
-			
+			List<Appointment>appointments = appointmentRepository.findByDateAndBarberId(dateD, b.getId());
+			BarberDTO dto = toDto.convert(b);			
 			
 			for (WorkingHours wh : b.getWorkingHours()) {
 				if (wh.getDate().equals(dateD)) {
-					dto.setHours(wh.getHours());
+					
 					dto.setShift(wh.getShift());
 					dto.setWorkingHoursId(wh.getId());
+					List<String> availableHours = wh.getHours();
+					for (Appointment a : appointments) {
+						if (wh.getHours().contains(a.getTime())) {
+							availableHours.remove(a.getTime());
+						}
+					}
+					dto.setHours(availableHours);
 				}
 			}
 			
 			result.add(dto);
 		}
+		
+		
+		
+		
 		
 		
 		
@@ -133,5 +147,66 @@ public class JpaBarberService implements BarberService {
 		
 		return true;
 	}
+	
+	
+	
+//	@Override
+//	public List<BarberDTO> findAll(String date) {
+//		LocalDate dateD;
+//
+//		if (date.isBlank()) {
+//			dateD = LocalDate.now();
+//		}else {
+//			try {
+//				dateD = LocalDate.parse(date);
+//			} catch (Exception e) {
+//				System.out.println("DAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATUUUUUUUUUUUUUUUUUUUUM U SERVISU");
+//				return null;
+//			}
+//		}
+//
+//
+//		List<Barber>barbers = barberRepository.findAll();
+//
+//		List<BarberDTO>result = new ArrayList<BarberDTO>();
+//
+//		for (Barber b : barbers) {
+//			List<Appointment> appointments = b.getAppointments();
+//			BarberDTO dto = toDto.convert(b);
+//
+//
+//			for (WorkingHours wh : b.getWorkingHours()) {
+//				if (wh.getDate().equals(dateD)) {
+//					dto.setWorkingHoursId(wh.getId());
+//					dto.setShift(wh.getShift());
+//					List<String>hours = new ArrayList<String>();
+//
+//					for (Appointment a : appointments) {
+//						if (a.getDate().equals(dateD)) {
+//							for (String s : wh.getHours()) {
+//								if (!s.equals(a.getTime())) {
+//									hours.add(s);
+//								}
+//							}
+//						}
+//					}
+//
+//					dto.setHours(hours);					
+//				}		
+//
+//			}
+//
+//			result.add(dto);
+//		}
+//
+//
+//
+//
+//
+//
+//
+//		return result;
+//	}
+
    
 }
