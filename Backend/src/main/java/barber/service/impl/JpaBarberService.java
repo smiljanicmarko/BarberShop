@@ -148,65 +148,7 @@ public class JpaBarberService implements BarberService {
 		return true;
 	}
 	
-	
-	
-//	@Override
-//	public List<BarberDTO> findAll(String date) {
-//		LocalDate dateD;
-//
-//		if (date.isBlank()) {
-//			dateD = LocalDate.now();
-//		}else {
-//			try {
-//				dateD = LocalDate.parse(date);
-//			} catch (Exception e) {
-//				System.out.println("DAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATUUUUUUUUUUUUUUUUUUUUM U SERVISU");
-//				return null;
-//			}
-//		}
-//
-//
-//		List<Barber>barbers = barberRepository.findAll();
-//
-//		List<BarberDTO>result = new ArrayList<BarberDTO>();
-//
-//		for (Barber b : barbers) {
-//			List<Appointment> appointments = b.getAppointments();
-//			BarberDTO dto = toDto.convert(b);
-//
-//
-//			for (WorkingHours wh : b.getWorkingHours()) {
-//				if (wh.getDate().equals(dateD)) {
-//					dto.setWorkingHoursId(wh.getId());
-//					dto.setShift(wh.getShift());
-//					List<String>hours = new ArrayList<String>();
-//
-//					for (Appointment a : appointments) {
-//						if (a.getDate().equals(dateD)) {
-//							for (String s : wh.getHours()) {
-//								if (!s.equals(a.getTime())) {
-//									hours.add(s);
-//								}
-//							}
-//						}
-//					}
-//
-//					dto.setHours(hours);					
-//				}		
-//
-//			}
-//
-//			result.add(dto);
-//		}
-//
-//
-//
-//
-//
-//
-//
-//		return result;
-//	}
+
 
    
 }
