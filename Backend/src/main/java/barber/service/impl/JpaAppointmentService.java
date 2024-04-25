@@ -35,19 +35,19 @@ public class JpaAppointmentService implements AppointmentService {
 
 	@Override
 	public List<Appointment> findAll() {
-		// TODO Auto-generated method stub
+		
 		return appointmentRepository.findAll();
 	}
 
 	@Override
 	public Appointment save(Appointment a) {
-		// TODO Auto-generated method stub
+		
 		return appointmentRepository.save(a);
 	}
 
 	@Override
 	public Appointment update(Appointment a) {
-		// TODO Auto-generated method stub
+		
 		return appointmentRepository.save(a);
 	}
 
@@ -65,16 +65,18 @@ public class JpaAppointmentService implements AppointmentService {
 
 		Barber barber = barberRepository.findOneById(dto.getBarberId());
 		BarberService service = serviceRepository.findOneById(dto.getServiceId());
-
+		System.out.println("IZ SERVISAAA: ");
+		
 		if (barber == null || service == null) {
-			return null;		
+					
+			return null;
 		}
 		
 		Appointment appointment = appointmentRepository.save(toAppointment.convert(dto));
 		
 		barber.addAppointment(appointment);
 		barberRepository.save(barber);
-
+		System.out.println("da li je appointment null?" + appointment==null? true : false);
 		return appointment;
 	}
 

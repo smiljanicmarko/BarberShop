@@ -77,7 +77,7 @@ public class AppointmentController {
 	public ResponseEntity<AppointmentDTO> bookAppointment(@Valid @RequestBody AppointmentDTO dto){
 
 		Appointment obj = appointmentService.bookAppointment(dto);
-		
+		System.out.println("Kad se vrati iz kontroleraaa: " + obj.getCustomerName());
 		if(obj != null) {
 			return new ResponseEntity<>(toDto.convert(obj), HttpStatus.CREATED);
 		}else {

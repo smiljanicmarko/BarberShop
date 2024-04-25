@@ -24,15 +24,26 @@ const Scheduling = () => {
         return `${yyyy}-${mm}-${dd}`;
       };
 
+      var kostur = {
+        //barberId: '',	
+        serviceId: 1,		
+        customerName: '',	
+        customerEmail: '',			
+        customerPhone: '',	
+       // date: '',	
+        //time: ''
+    };
+
     // ========================== STATE ============================================
     const [selectedCard, setSelectedCard] = useState(null);
     const [selectedHour, setSelectedHour] = useState(null);
     const [selectedBarber, setSelectedBarber] = useState('')
+    const [selectedBarberId, setSelectedBarberId] = useState('')
     const [barbers, setBarbers] = useState([])
+    const [object, setObject] = useState(kostur);
     const [pickedDate, setPickedDate] = useState({ date: getTodayDate() })
     const [isDisabled, setIsDisabled] = useState(true);
-    // const formRef = useRef(null);
-
+   
     const bookingSectionRef = useRef(null);
     // /////////////////////////////////////////////////////// J A V A  S C R I P T  F U N K C I J E \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
     //======================== USE EFFECT ============================================
@@ -56,6 +67,27 @@ const Scheduling = () => {
                 alert('Error occured please try again!');
             });
     }, [pickedDate.date]);
+
+    const create = () => {
+        var params = {
+           ...object,
+           barberId: selectedCard,
+           date: pickedDate.date,	
+           time: selectedHour
+        };
+
+        TestAxios.post('/appointments', params)
+        .then(res => {
+            console.log(res);
+           
+            alert('Dodavanje je uspesno izvrseno!');
+            navigate('/scheduling'); 
+        })
+        .catch(error => {           
+            console.log(error);
+            alert('Doslo je do greske, molimo pokusajte ponovo!');
+         });
+    }
     //======================== NAVIGATE ============================================
     var navigate = useNavigate()
 
@@ -69,6 +101,18 @@ const Scheduling = () => {
             [name]: value,
         }));
     };
+
+    const customerDetailsInputChanged = (e) => {
+        const { name, value } = e.target;
+
+        setObject((prevState) => ({
+            ...prevState,
+            [name]: value,
+        }));
+        console.log("email" +object.customerEmail);
+        console.log("name" +object.customerName);
+        console.log("phone" +object.customerPhone);
+    };
     const handleTimeClick = (cardId, hour, nickname) => {
         //Update the selected card and hour
         
@@ -77,6 +121,7 @@ const Scheduling = () => {
             setSelectedHour(hour);
             setIsDisabled(false); 
             setSelectedBarber(nickname);
+            setSelectedBarberId(cardId);
     };
 
     console.log('Karta: ' + selectedCard)
@@ -207,16 +252,16 @@ const Scheduling = () => {
                                 <Form>
 
                                     <FormGroup>
-                                        <FormLabel htmlFor=''>Email</FormLabel>
-                                        <Form.Control  type='email' id='' name='' onChange={valueInputChanged}></Form.Control>
+                                        <FormLabel htmlFor='customerEmail'>Email</FormLabel>
+                                        <Form.Control  type='email' id='customerEmail' name='customerEmail' onChange={customerDetailsInputChanged}></Form.Control>
                                     </FormGroup>
                                     <FormGroup>
-                                        <FormLabel htmlFor=''>Name</FormLabel>
-                                        <Form.Control type='text' id='' name='' onChange={valueInputChanged}></Form.Control>
+                                        <FormLabel htmlFor='customerName'>Name</FormLabel>
+                                        <Form.Control type='text' id='customerName' name='customerName' onChange={customerDetailsInputChanged}></Form.Control>
                                     </FormGroup>
                                     <FormGroup>
-                                        <FormLabel htmlFor=''>Phone number</FormLabel>
-                                        <Form.Control type='text' id='' name='' onChange={valueInputChanged}></Form.Control>
+                                        <FormLabel htmlFor='customerPhone'>Phone number</FormLabel>
+                                        <Form.Control type='text' id='customerPhone' name='customerPhone' onChange={customerDetailsInputChanged}></Form.Control>
                                     </FormGroup>
                                     </Form>
 
@@ -237,7 +282,7 @@ const Scheduling = () => {
                                         </tr>
                                         </tbody>
                                     </Table>
-                                    <Button className='btn btn-danger'/* onClick={() => create()} */ >Book</Button>
+                                    <Button className='btn btn-danger' onClick={() => create()} >Book</Button>
                                     </div>}                                    
                             </Col>
                            
