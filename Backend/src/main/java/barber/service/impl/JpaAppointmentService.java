@@ -69,10 +69,9 @@ public class JpaAppointmentService implements AppointmentService {
 		if (barber == null || service == null) {
 			return null;		
 		}
-
-
+		
 		Appointment appointment = appointmentRepository.save(toAppointment.convert(dto));
-
+		
 		barber.addAppointment(appointment);
 		barberRepository.save(barber);
 

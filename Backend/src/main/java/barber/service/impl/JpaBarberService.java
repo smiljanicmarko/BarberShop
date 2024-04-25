@@ -7,20 +7,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Service;
 
 import barber.model.Barber;
 import barber.model.WorkingHours;
 import barber.repository.BarberRepository;
 import barber.repository.WorkingHoursRepository;
-import barber.service.BarberServiceService;
+import barber.service.BarberService;
 import barber.support.BarberToBarberDto;
 import barber.web.dto.BarberDTO;
 import barber.web.dto.ShiftDTO;
 
 @Service
-public class JpaBarberService implements BarberServiceService {
+public class JpaBarberService implements BarberService {
 
 	
 	@Autowired

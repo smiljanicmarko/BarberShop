@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 import barber.model.Appointment;
 import barber.service.AppointmentService;
-import barber.service.BarberServiceService;
+import barber.service.BarberService;
 import barber.service.ServiceService;
 import barber.web.dto.AppointmentDTO;
 
@@ -18,7 +18,7 @@ public class AppointmentDtoToApointment implements Converter<AppointmentDTO, App
     private AppointmentService appointmentService;
 
     @Autowired
-    private BarberServiceService barberService;
+    private BarberService barberService;
     
     @Autowired
     private ServiceService serviceService;
@@ -36,7 +36,7 @@ public class AppointmentDtoToApointment implements Converter<AppointmentDTO, App
         }
 
         if(e != null) {
-         e.setBarber(barberService.findOneById(dto.getId()));
+         e.setBarber(barberService.findOneById(dto.getBarberId()));
          e.setCustomerEmail(dto.getCustomerEmail());
          e.setCustomerName(dto.getCustomerName());
          e.setCustomerPhone(dto.getCustomerPhone());
