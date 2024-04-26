@@ -27,6 +27,7 @@ const getDataById = useCallback((id) => {
         // handle success
         console.log(res);
         setEditObj({ 
+            id: barberId,
             name: res.data.name,	    
             lastName: res.data.lastName,    
             nickname: res.data.nickname,    
@@ -57,20 +58,20 @@ const valueInputChanged = (e) => {
 
 //=============================== FUNKCIJA ZA EDIT ==================================
 const edit = () => {
-    var params = {
-        id: editObj.id,
-        naslov: editObj.naslov,
-        tip: editObj.tip,          
-        potrebanProcenat: editObj.potrebanProcenat,
-        opis: editObj.opis,        
-        zgradaId: editObj.zgradaId     
-    };
+    // var params = {
+    //     id: editObj.id,
+    //     naslov: editObj.naslov,
+    //     tip: editObj.tip,          
+    //     potrebanProcenat: editObj.potrebanProcenat,
+    //     opis: editObj.opis,        
+    //     zgradaId: editObj.zgradaId     
+    // };
 
-    TestAxios.put('/poruke/' +editObj.id, params)
+    TestAxios.put('/barbers/' + barberId, editObj)
     .then(res => {      
         console.log(res);
         alert('Izmena je uspesno izvrsena!');
-        navigate('/zadaci');
+        navigate('/barbers');
     })
     .catch(error => {
         // handle error
@@ -115,7 +116,7 @@ const edit = () => {
                      
   {/*===================================== S E L E C T  /   PADAJUCI MENI ======= onChange NIKAKO U LABEL!!! ========================== */} 
 
-                        {/* <Button  onClick={() => create()} style={{marginTop:'20px'}} >Add</Button> */}
+                        <Button  onClick={() => edit()} style={{marginTop:'20px'}}>Edit</Button> 
                     </Form>
                 </Col>
                 <Col></Col>
