@@ -84,10 +84,7 @@ const edit = () => {
         <div>
             <h1>Edit barber</h1>
 
-        {/* U SUSTINI ISTO KAO I ZA DODAVANJE: 
-        PRIMER: 
-        
-         <Row>
+            <Row>
                 <Col></Col>
                 <Col></Col>
                 <Col xs="12" sm="10" md="4">
@@ -95,25 +92,36 @@ const edit = () => {
                     <Form>
                         
                       <FormGroup>
-                        <FormLabel htmlFor='naslov'>Naslov</FormLabel>
-                        <Form.Control type='text' value={editObj.naslov} id='naslov' name='naslov' onChange={valueInputChanged}></Form.Control>
+                        <FormLabel htmlFor='name'>Name</FormLabel>
+                        <Form.Control type='text' id='name' value={editObj.name} name='name' onChange={valueInputChanged}></Form.Control>
+                      </FormGroup>
+                      <FormGroup>
+                        <FormLabel htmlFor='lastName'>Last name</FormLabel>
+                        <Form.Control type='text' id='lastName' value={editObj.lastName} name='lastName' onChange={valueInputChanged}></Form.Control>
+                      </FormGroup>
+                      <FormGroup>
+                        <FormLabel htmlFor='nickname'>Nickname</FormLabel>
+                        <Form.Control type='text' id='nickname' name='nickname' value={editObj.nickname} onChange={valueInputChanged}></Form.Control>
+                      </FormGroup>
+                      <FormGroup>
+                        <FormLabel htmlFor='picture'>Picture url</FormLabel>
+                        <Form.Control type='text' id='picture' name='picture' value={editObj.picture} onChange={valueInputChanged}></Form.Control>
+                      </FormGroup>
+                      <FormGroup>
+                        <FormLabel htmlFor='aboutMe'>About me</FormLabel>
+                        <Form.Control as="textarea" id='aboutMe' name='aboutMe' value={editObj.aboutMe} onChange={valueInputChanged}></Form.Control>
                       </FormGroup>
 
-                      <FormGroup>
-                        <FormLabel htmlFor='opis'>Opis</FormLabel>
-                        <Form.Control type='text' value={editObj.opis} id='opis' name='opis' onChange={valueInputChanged}></Form.Control>
-                      </FormGroup>
-                        {editObj.tip==='predlog'? 
-                         <FormGroup>
-                         <FormLabel htmlFor='potrebanProcenat'>Potreban procenat</FormLabel>
-                         <Form.Control type='number' value={editObj.potrebanProcenat} id='potrebanProcenat' name='potrebanProcenat' onChange={valueInputChanged}></Form.Control>
-                       </FormGroup>
-                       :
-                       <></>
-                    
-                    }
-        
-        */}
+                     
+  {/*===================================== S E L E C T  /   PADAJUCI MENI ======= onChange NIKAKO U LABEL!!! ========================== */} 
+
+                        {/* <Button  onClick={() => create()} style={{marginTop:'20px'}} >Add</Button> */}
+                    </Form>
+                </Col>
+                <Col></Col>
+                <Col></Col>
+                
+            </Row>
 
 
 
