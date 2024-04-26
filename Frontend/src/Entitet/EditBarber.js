@@ -4,19 +4,17 @@ import { useCallback, useEffect, useState } from "react"
 import { FormGroup, FormLabel, Row, Col, Form, Button } from 'react-bootstrap';
 
 const EditBarber = () => {
-
-    const urlParams = useParams()
-    const trazeniId = urlParams.id
+ 
+    const barberId = useParams().id
 
     var navigate = useNavigate()
 //========================================= promenljiva =======================================
     var obj ={
-        id: null,
-        naslov: '',
-        tip: '',          
-        potrebanProcenat: null,
-        opis: '',        
-        zgradaId: null      
+        name: '',	    
+	    lastName: '',	    
+	    nickname: '',	    
+	    picture: '',	    
+	    aboutMe: '',   
     }
 //=========================================== STATE ============================================
 const [editObj, setEditObj] = useState(obj);
@@ -24,17 +22,16 @@ const [editObj, setEditObj] = useState(obj);
 //=================================== DOBAVLJANJE PODATAKA ======================================
 
 const getDataById = useCallback((id) => {
-    TestAxios.get('/poruke/' + id)
+    TestAxios.get('/barbers/' + id)
     .then(res => {
         // handle success
         console.log(res);
         setEditObj({ 
-            id:res.data.id, 
-            naslov: res.data.naslov, 
-            tip: res.data.tip,
-            potrebanProcenat: res.data.potrebanProcenat,
-            opis: res.data.opis,
-            zgradaId: res.data.zgradaId
+            name: res.data.name,	    
+            lastName: res.data.lastName,    
+            nickname: res.data.nickname,    
+            picture: res.data.picture,	    
+            aboutMe: res.data.aboutMe,   
         });
     })
     .catch(error => {
@@ -45,7 +42,7 @@ const getDataById = useCallback((id) => {
 }, []);
 
 useEffect(() => {
-    getDataById(trazeniId)
+    getDataById(barberId)
 }, []);
 
 //============================== HANDLERI =============================
