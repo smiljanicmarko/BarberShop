@@ -50,6 +50,10 @@ const Barbers = () => {
         navigate(`/set-shift/${id}`);
     }
 
+    const goToEdit = (id) =>{
+        navigate('/edit-barber/' + id)
+    }
+
     // ======================== BRISANJE ===========================================
     const izbrisi = (id) => {
         TestAxios.delete('/zadaci/' + id)
@@ -86,7 +90,7 @@ const Barbers = () => {
                    
                     {/* === DUGMICI ===*/}
                     <td><Button className='btn btn-success' style={{marginRight: '10px'}} onClick={() => goToSetShift(barber.id)}>Set shifts</Button>
-                        <Button className='btn btn-warning' style={{marginRight: '10px'}} onClick={() => izbrisi(barber.id)}>Edit</Button>
+                        <Button className='btn btn-warning' style={{marginRight: '10px'}} onClick={() => goToEdit(barber.id)}>Edit</Button>
                         <Button className='btn btn-danger' onClick={() => izbrisi(barber.id)}>Delete</Button></td>
                 </tr>
             )

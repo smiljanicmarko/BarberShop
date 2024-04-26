@@ -14,6 +14,7 @@ import { jwtDecode } from 'jwt-decode';
 import Barbers from './Entitet/Barbers';
 import SetShift from './Entitet/SetShift';
 import AddBarber from './Entitet/AddBarber';
+import EditBarber from './Entitet/EditBarber';
 
 
 const App = () => {
@@ -50,6 +51,7 @@ const App = () => {
                         <Route path="/scheduling" element={<Scheduling />} />
                         <Route path='/barbers' element={<Barbers/>} />
                         <Route path='/add-barber' element={<AddBarber/>} />
+                        <Route path='/edit-barber/:id' element={<EditBarber/>} />
                         <Route path='/set-shift/:id' element={<SetShift/>} />                       
                         <Route path='/dodavanje' element={<Dodavanje/>}/>                       
                         <Route path="*" element={<NotFound />} />
