@@ -69,7 +69,11 @@ public class JpaAppointmentService implements AppointmentService {
 		Barber barber = barberRepository.findOneById(dto.getBarberId());
 		BarberService service = serviceRepository.findOneById(dto.getServiceId());	
 		
-		if (barber == null || service == null) {					
+		String phone = dto.getCustomerPhone();
+		String email = dto.getCustomerEmail();
+		
+		
+		if (barber == null || service == null || phone.isBlank() || email.isBlank()) {					
 			return null;
 		}
 		

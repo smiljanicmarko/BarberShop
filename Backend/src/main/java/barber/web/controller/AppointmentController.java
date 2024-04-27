@@ -78,6 +78,8 @@ public class AppointmentController {
 
 		Appointment obj = appointmentService.bookAppointment(dto);
 		
+		
+		
 		if(obj != null) {
 			return new ResponseEntity<>(toDto.convert(obj), HttpStatus.CREATED);
 		}else {
