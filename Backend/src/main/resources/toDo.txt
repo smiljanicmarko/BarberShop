@@ -1,4 +1,4 @@
--edit barber
+--------------------------------------------------------------------------edit barber
 -delete barber
 -after booking an appointment, user can again book with the same details. Fix it
 --------------------------------------------------------------------------Book an appointment
