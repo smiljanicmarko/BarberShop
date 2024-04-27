@@ -43,6 +43,7 @@ const Scheduling = () => {
     const [object, setObject] = useState(kostur);
     const [pickedDate, setPickedDate] = useState({ date: getTodayDate() })
     const [isDisabled, setIsDisabled] = useState(true);
+    const [errors, setErrors] = useState({});
    
     const bookingSectionRef = useRef(null);
     // /////////////////////////////////////////////////////// J A V A  S C R I P T  F U N K C I J E \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -69,6 +70,7 @@ const Scheduling = () => {
     }, [pickedDate.date]);
 
     const create = () => {
+        if (!validate()) return;
         var params = {
            ...object,
            barberId: selectedCard,
@@ -136,6 +138,17 @@ const Scheduling = () => {
           });
         }
       }, [isDisabled]); 
+
+
+      const validate = () => {
+            let tempErrors = {};
+            tempErrors.customerName = object.customerName ? "" : "Name is obligatory.";
+            tempErrors.customerEmail = object.customerEmail ? "" : "Email is obligatory";
+            tempErrors.customerPhone = object.customerPhone ? "" : "Phone number is obligatory";
+           
+            setErrors(tempErrors);
+            return Object.values(tempErrors).every(x => x === "");
+        };
 
 
     {/* ================================================ RENDER TABELE ========================================= */ }
@@ -253,15 +266,18 @@ const Scheduling = () => {
 
                                     <FormGroup>
                                         <FormLabel htmlFor='customerEmail'>Email</FormLabel>
-                                        <Form.Control  type='email' id='customerEmail' name='customerEmail' onChange={customerDetailsInputChanged}></Form.Control>
+                                        <Form.Control  type='email' id='customerEmail' name='customerEmail' isInvalid={!!errors.customerEmail} onChange={customerDetailsInputChanged}></Form.Control>
+                                        <Form.Control.Feedback type="invalid">{errors.customerEmail} </Form.Control.Feedback>
                                     </FormGroup>
                                     <FormGroup>
                                         <FormLabel htmlFor='customerName'>Name</FormLabel>
-                                        <Form.Control type='text' id='customerName' name='customerName' onChange={customerDetailsInputChanged}></Form.Control>
+                                        <Form.Control type='text' id='customerName' name='customerName' isInvalid={!!errors.customerName} onChange={customerDetailsInputChanged}></Form.Control>
+                                        <Form.Control.Feedback type="invalid">{errors.customerName} </Form.Control.Feedback>
                                     </FormGroup>
                                     <FormGroup>
                                         <FormLabel htmlFor='customerPhone'>Phone number</FormLabel>
-                                        <Form.Control type='text' id='customerPhone' name='customerPhone' onChange={customerDetailsInputChanged}></Form.Control>
+                                        <Form.Control type='text' id='customerPhone' name='customerPhone' isInvalid={!!errors.customerPhone} onChange={customerDetailsInputChanged}></Form.Control>
+                                        <Form.Control.Feedback type="invalid">{errors.customerPhone} </Form.Control.Feedback>
                                     </FormGroup>
                                     </Form>
 
