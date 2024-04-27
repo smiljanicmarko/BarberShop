@@ -58,15 +58,7 @@ const valueInputChanged = (e) => {
 
 //=============================== FUNKCIJA ZA EDIT ==================================
 const edit = () => {
-    // var params = {
-    //     id: editObj.id,
-    //     naslov: editObj.naslov,
-    //     tip: editObj.tip,          
-    //     potrebanProcenat: editObj.potrebanProcenat,
-    //     opis: editObj.opis,        
-    //     zgradaId: editObj.zgradaId     
-    // };
-
+   
     TestAxios.put('/barbers/' + barberId, editObj)
     .then(res => {      
         console.log(res);

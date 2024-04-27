@@ -135,35 +135,35 @@ public class BarberController {
 	    }
 
 	 
-	 @PutMapping(value = "/{id}/setShift")
-	    public ResponseEntity<BarberDTO> setShiftForBarber(@PathVariable Long id, @RequestParam Integer shift){
-
-		 	Barber barber= barberService.findOneById(id);
-		 	LocalDate today = LocalDate.now();
-		 
-	        if (barber == null || shift == null || shift < 0 || shift > 3) {
-	        	return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-	        }
-	        
-	    
-	       WorkingHours wh = new WorkingHours();
-	       wh.setDate(today);
-	       wh.setShift(shift);
-	        
-	        
-	       whRepository.save(wh);
-	       
-	       
-	       
-	     List<WorkingHours>whList = new ArrayList<WorkingHours>();
-	     whList.add(wh);
-	     
-	     barber.setWorkingHours(whList);
-	        barberService.save(barber);
-
-	        return new ResponseEntity<>(HttpStatus.OK);
-	    }
-	 
+//	 @PutMapping(value = "/{id}/setShift")
+//	    public ResponseEntity<BarberDTO> setShiftForBarber(@PathVariable Long id, @RequestParam Integer shift){
+//
+//		 	Barber barber= barberService.findOneById(id);
+//		 	LocalDate today = LocalDate.now();
+//		 
+//	        if (barber == null || shift == null || shift < 0 || shift > 3) {
+//	        	return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+//	        }
+//	        
+//	    
+//	       WorkingHours wh = new WorkingHours();
+//	       wh.setDate(today);
+//	       wh.setShift(shift);
+//	        
+//	        
+//	       whRepository.save(wh);
+//	       
+//	       
+//	       
+//	     List<WorkingHours>whList = new ArrayList<WorkingHours>();
+//	     whList.add(wh);
+//	     
+//	     barber.setWorkingHours(whList);
+//	        barberService.save(barber);
+//
+//	        return new ResponseEntity<>(HttpStatus.OK);
+//	    }
+//	 
 	 
 	 
 	
